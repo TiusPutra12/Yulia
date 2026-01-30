@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Yulia Arinda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+            --accent-color: #ff9ff3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: -5%; left: -5%;
+            width: 110%; height: 110%;
+            background: linear-gradient(to bottom, rgba(15, 32, 39, 0.4), rgba(32, 58, 67, 0.4)), 
+                        url('assets/welcome.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            filter: brightness(0.85);
+            animation: bgBreath 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgBreath {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatProfile {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        @keyframes flowerDrift {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(110vh) translateX(20px) rotate(360deg); opacity: 0; }
+        }
+
+        .flower-particle {
+            position: fixed;
+            color: var(--accent-color);
+            z-index: -1;
+            pointer-events: none;
+            text-shadow: 0 0 5px rgba(255, 159, 243, 0.5);
+            animation: flowerDrift 15s linear infinite;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 40px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .profile-pulse {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: pulseRing 3s infinite;
+            z-index: 0;
+        }
+
+        .profile-img-container {
+            position: relative;
+            z-index: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            animation: floatProfile 6s ease-in-out infinite;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: block;
+        }
+
+        .name-wrapper h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 68px;
+            color: #fff;
+            font-weight: 400;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s backwards;
+        }
+
+        /* --- Update Tagline untuk Bio GROW --- */
+        .tagline {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.6;
+            letter-spacing: 0.5px; /* Spasi dikurangi agar kalimat panjang muat */
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 35px;
+            animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s backwards;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .grow-title {
+            font-weight: 700;
+            font-size: 20px;
+            color: #ff9ff3; /* Warna pink soft agar menonjol */
+            letter-spacing: 2px;
+            display: block; /* Agar turun ke baris baru jika perlu, tapi di sini kita atur inline-block */
+            margin-bottom: 4px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 45px;
+            animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s backwards;
+        }
+
+        .social-btn {
+            width: 50px; height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: #fff;
+            color: #333;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .link-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .link-card:hover::before { left: 100%; transition: 0.7s; }
+
+        .link-card:hover {
+            transform: scale(1.02) translateY(-2px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.6s; }
+        .link-card:nth-child(2) { animation-delay: 0.7s; }
+        .link-card:nth-child(3) { animation-delay: 0.8s; }
+        .link-card:nth-child(4) { animation-delay: 0.9s; }
+
+        .link-content { display: flex; align-items: center; gap: 16px; }
+        .link-text { font-weight: 500; font-size: 16px; letter-spacing: 0.3px; }
+        
+        .arrow-icon {
+            font-size: 14px; opacity: 0.7; transition: transform 0.3s;
+        }
+        
+        .link-card:hover .arrow-icon { transform: translateX(5px); opacity: 1; }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 56px !important; }
+            .container { padding-top: 30px; }
+            .profile-pulse { width: 125px; height: 125px; }
+            .profile-img { width: 105px; height: 105px; }
+            .tagline { font-size: 14px; padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flower-particle" style="left: 10%; font-size: 20px; animation-duration: 12s;">🌸</div>
+    <div class="flower-particle" style="left: 30%; font-size: 14px; animation-duration: 18s; animation-delay: 2s;">🌸</div>
+    <div class="flower-particle" style="left: 70%; font-size: 24px; animation-duration: 15s; animation-delay: 1s;">🌸</div>
+    <div class="flower-particle" style="left: 90%; font-size: 18px; animation-duration: 20s; animation-delay: 5s;">🌸</div>
+    <div class="flower-particle" style="left: 50%; font-size: 16px; animation-duration: 14s; animation-delay: 7s;">🌸</div>
+    <div class="flower-particle" style="left: 20%; font-size: 22px; animation-duration: 16s; animation-delay: 3s;">🌸</div>
+
+    <div class="container">
+        <div class="profile-wrapper">
+            <div class="profile-pulse"></div>
+            <div class="profile-img-container">
+                <img src="assets/welcome.jpeg" alt="Yulia Arinda" class="profile-img">
+            </div>
+        </div>
+        
+        <div class="name-wrapper">
+            <h1>Yulia Arinda</h1>
+        </div>
+        
+        <p class="tagline">
+            Belajar, Berbagi, dan Bertumbuh Bareng Remaja
+        </p>
+
+        <div class="social-icons">
+            <a href="https://api.whatsapp.com/qr/DL2KXM3WT7EBG1?autoload=1&app_absent=0" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/yulia.arinda" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@yulia.arinda" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <div class="links-container">
+            <a href="https://api.whatsapp.com/qr/DL2KXM3WT7EBG1?autoload=1&app_absent=0" class="link-card">
+                <div class="link-content">
+                    <i class="fab fa-whatsapp" style="color: #4ade80; font-size: 24px;"></i>
+                    <span class="link-text">WhatsApp</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://www.instagram.com/yulia.arinda" class="link-card">
+                <div class="link-content">
+                    <i class="fab fa-instagram" style="color: #ff9ff3; font-size: 24px;"></i>
+                    <span class="link-text">Instagram</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@yulia.arinda" class="link-card">
+                <div class="link-content">
+                    <i class="fab fa-tiktok" style="color: #fff; font-size: 22px;"></i>
+                    <span class="link-text">TikTok</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://www.instagram.com/yourgrowstory?igsh=eGFob2EyZ3JvNGtk" class="link-card">
+                <div class="link-content">
+                    <i class="fab fa-instagram" style="color: #74b9ff; font-size: 22px;"></i>
+                    <span class="link-text">Your Grow Story</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

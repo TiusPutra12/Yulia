@@ -29,6 +29,7 @@
             color: var(--text-color);
         }
 
+        /* Background DIAM (Animasi dihapus) */
         body::before {
             content: "";
             position: fixed;
@@ -40,12 +41,7 @@
             background-position: center;
             z-index: -2;
             filter: brightness(0.85);
-            animation: bgBreath 25s ease-in-out infinite alternate;
-        }
-
-        @keyframes bgBreath {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            /* animation: bgBreath ... (DIHAPUS AGAR TIDAK BERGERAK) */
         }
 
         @keyframes fadeInUp {
@@ -68,6 +64,13 @@
             0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
             20% { opacity: 0.8; }
             100% { transform: translateY(110vh) translateX(20px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Animasi Khusus Highlight Tombol */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .flower-particle {
@@ -137,25 +140,15 @@
             animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s backwards;
         }
 
-        /* --- Update Tagline untuk Bio GROW --- */
         .tagline {
             font-size: 15px;
             font-weight: 300;
             line-height: 1.6;
-            letter-spacing: 0.5px; /* Spasi dikurangi agar kalimat panjang muat */
+            letter-spacing: 0.5px;
             color: rgba(255,255,255,0.95);
             margin-bottom: 35px;
             animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s backwards;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .grow-title {
-            font-weight: 700;
-            font-size: 20px;
-            color: #ff9ff3; /* Warna pink soft agar menonjol */
-            letter-spacing: 2px;
-            display: block; /* Agar turun ke baris baru jika perlu, tapi di sini kita atur inline-block */
-            margin-bottom: 4px;
         }
 
         .social-icons {
@@ -213,6 +206,24 @@
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* CLASS KHUSUS UNTUK HIGHLIGHT YOUR GROW */
+        .link-card.highlight {
+            background: linear-gradient(270deg, rgba(255, 159, 243, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 159, 243, 0.3));
+            background-size: 200% 200%;
+            border: 2px solid rgba(255, 159, 243, 0.8);
+            animation: fadeInUp 0.8s ease backwards, gradientMove 4s ease infinite;
+        }
+
+        .link-card.highlight .link-text {
+            color: #ff9ff3;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 159, 243, 0.5);
+        }
+
+        .link-card.highlight .arrow-icon {
+            color: #ff9ff3;
         }
 
         .link-card::before {
@@ -288,6 +299,14 @@
         </div>
 
         <div class="links-container">
+            <a href="https://www.instagram.com/yourgrowstory?igsh=eGFob2EyZ3JvNGtk" class="link-card highlight">
+                <div class="link-content">
+                    <i class="fab fa-instagram" style="color: #ff9ff3; font-size: 22px;"></i>
+                    <span class="link-text">YourGrowStory</span>
+                </div>
+                <i class="fas fa-star arrow-icon"></i>
+            </a>
+
             <a href="https://api.whatsapp.com/qr/DL2KXM3WT7EBG1?autoload=1&app_absent=0" class="link-card">
                 <div class="link-content">
                     <i class="fab fa-whatsapp" style="color: #4ade80; font-size: 24px;"></i>
@@ -312,13 +331,6 @@
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
 
-            <a href="https://www.instagram.com/yourgrowstory?igsh=eGFob2EyZ3JvNGtk" class="link-card">
-                <div class="link-content">
-                    <i class="fab fa-instagram" style="color: #74b9ff; font-size: 22px;"></i>
-                    <span class="link-text">Your Grow Story</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
         </div>
     </div>
 
